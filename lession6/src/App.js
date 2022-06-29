@@ -34,8 +34,12 @@ function App() {
   ];
   const VALID_NUMBER_PLAYER = 70;
   const [player, setPlayer] = useState(listPlayer);
+  const onDeletePlayerHandler = (id) => {
+    const newState = player.filter((player) => player.id !== id);
+    setPlayer(newState);
+  }
   const list = player.map((player) => (
-    <Player key={player.id} players={player} />
+    <Player key={player.id} players={player} onDeletePlayer={onDeletePlayerHandler}/>
   ));
   const addNewMember = () => {
     const newMember = {
@@ -71,4 +75,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
